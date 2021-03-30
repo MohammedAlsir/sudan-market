@@ -19,12 +19,12 @@ class UserController extends Controller
             $user->forceFill([
                 'remember_token' => $token,
             ])->save(); // حفظ التوكن في قاعدة البيانات 
-            return response()->json($user ,200); // رقم الهاتف وكلمة المرور صحيحة وارجاع رسالة 200 
+            return response()->json(['error'=>false,'message'=>'','data'=>$user] ,200); // رقم الهاتف وكلمة المرور صحيحة وارجاع رسالة 200 
           }else{
-                return response()->json(['error'=> 'the  password is incorect','code'=> 0 ],401); // خطأ في كلمة المرور
+                return response()->json(['error'=> true,'message'=>'The password is wrong','code'=> 0 ],401); // خطأ في كلمة المرور
                }
         } else{
-                return response()->json(['error'=> 'the phone number  is incorect','code'=> 1 ],401); // خطأ في رقم الهاتف 
+                return response()->json(['error'=> true,'message'=>'Phone number is incorrect' ,'code'=> 1 ],401); // خطأ في رقم الهاتف 
               }
     }// End Login Function 
     /**
@@ -38,18 +38,18 @@ class UserController extends Controller
     {
         $user = User::where('phone', '=', $request->input('phone'))->first();
         if($user == null){
-                $new_user = User::create([
-                                'user_name' => $request['user_name'],
+                $new_user = User::create([ //انشاء مستخدم جديد
+                                'full_name' => $request['full_name'],
                                 'password' => $request['password'],
                                 'phone' => $request['phone'],
                                 'level' => '2',
                                 'remember_token' => Str::random(60),
                             ])->save();
-                            return response()->json($new_user,201);
+                            return response()->json(['error'=>false,'message'=>'','data'=>$new_user],201);
             
             
         }else
-            return response()->json(['error'=> 'the phone is duplicated...','code'=> 4  ],400);
+            return response()->json(['error'=>true,'message'=> 'The phone is duplicated...','code'=> 4  ],400); //يوجد مستخدم بهذا الرقم
     }
     
 }
