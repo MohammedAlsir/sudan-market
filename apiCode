@@ -1,0 +1,17 @@
+1 - رابط تسجيل الدخول 
+    http://127.0.0.1:8000/api/user/login
+    - المتغيرات :
+        1- phone 2- password
+    - status code  رسائل الخطأ الراجعة:
+        - 0  -> the  password is incorect..
+        - 1  -> the phone number  is incorect...
+
+2 - رابط تسجيل مستخدم جديد
+    http://127.0.0.1:8000/api/user/register
+    - المتغيرات :
+    1- user_name 2- password 3-phone 
+    - status code  رسائل الخطأ الراجعة :
+        - 3  -> the phone is duplicated..
+
+ 
+
