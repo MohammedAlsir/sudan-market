@@ -21,10 +21,10 @@ class UserController extends Controller
             ])->save(); // حفظ التوكن في قاعدة البيانات 
             return response()->json(['error'=>false,'message'=>'','data'=>$user] ,200); // رقم الهاتف وكلمة المرور صحيحة وارجاع رسالة 200 
           }else{
-                return response()->json(['error'=> true,'message'=>'The password is wrong','code'=> 0 ],401); // خطأ في كلمة المرور
+                return response()->json(['error'=> true,'message'=>'The Password Is Wrong','code'=> 0 ],401); // خطأ في كلمة المرور
                }
         } else{
-                return response()->json(['error'=> true,'message'=>'Phone number is incorrect' ,'code'=> 1 ],401); // خطأ في رقم الهاتف 
+                return response()->json(['error'=> true,'message'=>'Phone Number Is Incorrect' ,'code'=> 1 ],401); // خطأ في رقم الهاتف 
               }
     }// End Login Function 
     /**
@@ -49,7 +49,7 @@ class UserController extends Controller
             
             
         }else
-            return response()->json(['error'=>true,'message'=> 'The phone is duplicated...','code'=> 4  ],400); //يوجد مستخدم بهذا الرقم
+            return response()->json(['error'=>true,'message'=> 'The Phone Is Duplicated...','code'=> 4  ],400); //يوجد مستخدم بهذا الرقم
     }
     
 }

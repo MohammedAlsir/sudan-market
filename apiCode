@@ -3,15 +3,36 @@
     - المتغيرات :
         1- phone 2- password
     - status code  رسائل الخطأ الراجعة:
-        - 0  -> The password is wrong
-        - 1  -> Phone number is incorrect
+        - 0  -> The Password Is Wrong
+        - 1  -> Phone Number Is Incorrect
 
 2 - رابط تسجيل مستخدم جديد
     http://127.0.0.1:8000/api/user/register
     - المتغيرات :
     1- full_name 2- password 3-phone 
     - status code  رسائل الخطأ الراجعة :
-        - 3  -> the phone is duplicated
+        - 3  -> The Phone Is Duplicated
+
+3 - عرض كل المنتجات
+    http://127.0.0.1:8000/api/products
+    - المتغيرات :
+        لا يوجد 
+    - status code  رسائل الخطأ الراجعة :
+        - 4  -> There Are No Products Currently
+
+ 4 - عرض كل الاقسام
+    http://127.0.0.1:8000/api/sections
+    - المتغيرات :
+        لا يوجد 
+    - status code  رسائل الخطأ الراجعة :
+        - 5  -> There Are No Sections Currently
+
+5 - عرض كل الاقسام
+    http://127.0.0.1:8000/api/requests
+    - المتغيرات :
+        لا يوجد 
+    - status code  رسائل الخطأ الراجعة :
+        - 6  -> There Are No Requests Currently
 
  
 
