@@ -16,7 +16,7 @@ class OperationController extends Controller
      * 
      *****************************************************************************************************/
     public function products(){ // Function Get All Products
-        $products = Product::get(); //Get All
+        $products = Product::inRandomOrder()->limit(5)->get(); //Get All
         if (count($products) > 0) { // التأكد من وجود منتجات 
              return response()->json([
                 'error'=>false ,

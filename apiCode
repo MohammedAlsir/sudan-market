@@ -27,7 +27,7 @@
     - status code  رسائل الخطأ الراجعة :
         - 5  -> There Are No Sections Currently
 
-5 - عرض كل الاقسام
+5 - عرض كل الطلبات
     http://127.0.0.1:8000/api/requests
     - المتغيرات :
         لا يوجد 
