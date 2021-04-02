@@ -6,11 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class UserController extends Controller
 {
-    // Begin Login Function
+     /*****************************************************************************************************
+     * 
+     *                                   Begin Login Function 
+     * 
+     *****************************************************************************************************/
     public function login(Request $request){
         $user = User::where('phone', '=', $request->input('phone'))->first();
         if($user != null){// for test user not empty
@@ -19,37 +25,64 @@ class UserController extends Controller
             $user->forceFill([
                 'remember_token' => $token,
             ])->save(); // حفظ التوكن في قاعدة البيانات 
-            return response()->json(['error'=>false,'message'=>'','data'=>$user] ,200); // رقم الهاتف وكلمة المرور صحيحة وارجاع رسالة 200 
+            return response()->json(
+              ['error'=>false,
+              'message'=>'',
+              'data'=>$user]
+              ,200); // رقم الهاتف وكلمة المرور صحيحة وارجاع رسالة 200 
           }else{
-                return response()->json(['error'=> true,'message'=>'The Password Is Wrong','code'=> 0 ],401); // خطأ في كلمة المرور
+                return response()->json(
+                  ['error'=> true,
+                  'message'=>'The Password Is Wrong',
+                  'code'=> 0 ]
+                  ,401); // خطأ في كلمة المرور
                }
         } else{
-                return response()->json(['error'=> true,'message'=>'Phone Number Is Incorrect' ,'code'=> 1 ],401); // خطأ في رقم الهاتف 
+                return response()->json(
+                  ['error'=> true,
+                  'message'=>'Phone Number Is Incorrect' ,
+                  'code'=> 1 ]
+                  ,401); // خطأ في رقم الهاتف 
               }
-    }// End Login Function 
-    /**
+    } 
+     /*****************************************************************************************************
      * 
+     *                                   End  Login Function 
      * 
-     * END
-     *  
+     *****************************************************************************************************/
+    /*****************************************************************************************************
      * 
-     **/
+     *                                   Begin Regester Function 
+     * 
+     *****************************************************************************************************/
     public function Register(Request $request)
     {
         $user = User::where('phone', '=', $request->input('phone'))->first();
         if($user == null){
                 $new_user = User::create([ //انشاء مستخدم جديد
                                 'full_name' => $request['full_name'],
-                                'password' => $request['password'],
                                 'phone' => $request['phone'],
                                 'level' => '2',
+                                'password' => Hash::make($request['password']),
                                 'remember_token' => Str::random(60),
-                            ])->save();
-                            return response()->json(['error'=>false,'message'=>'','data'=>$new_user],201);
+                            ]);
+                            return response()->json(
+                              ['error'=>false,
+                              'message'=>'',
+                              'data'=>$new_user],201);
             
             
         }else
-            return response()->json(['error'=>true,'message'=> 'The Phone Is Duplicated...','code'=> 4  ],400); //يوجد مستخدم بهذا الرقم
+            return response()->json(
+              ['error'=>true,
+              'message'=> 'The Phone Is Duplicated...',
+              'code'=> 4  ]
+              ,400); //يوجد مستخدم بهذا الرقم
     }
+     /*****************************************************************************************************
+     * 
+     *                                   End  Regester Function 
+     * 
+     *****************************************************************************************************/
     
 }
