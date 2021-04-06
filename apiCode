@@ -34,5 +34,14 @@
     - status code  رسائل الخطأ الراجعة :
         - 6  -> There Are No Requests Currently
 
+6 - عرض كل الطلبات
+    http://127.0.0.1:8000/api/user/{id}/profile
+    - المتغيرات :
+        1 - full_name
+        2 - password 
+        3 - phone 
+    - status code  رسائل الخطأ الراجعة :
+        - 1  -> Phone Number Is Incorrect
+
  
 
