@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -82,6 +83,41 @@ class UserController extends Controller
      /*****************************************************************************************************
      * 
      *                                   End  Regester Function 
+     * 
+     *****************************************************************************************************/
+
+      /*****************************************************************************************************
+     * 
+     *                                   Begin  Profile Function 
+     * 
+     *****************************************************************************************************/
+    public function profile(Request $request , $id){
+        
+        $user = User::find($id);
+        if($user == null)
+          return response()->json([
+            'error'=> true,
+            'message'=>'Phone Number Is Incorrect' ,  //الهاتف غير صحيح
+            'code'=> 1  ],
+              404);
+        else{
+            // $request->validate([
+            //   // 'phone' => ['required', 'min:10', 'max:10', Rule::unique("users")->ignore($user->id, "id")],
+            //   'full_name' => 'required',
+            //   'address' => 'required',
+            //   'password' => 'required',
+            //   ]);
+
+          $user->fill($request->all())->save();
+          return response()->json([
+          'error'=>false,
+          'message'=>'',
+          'data'=>$user],200);
+        }
+    }
+     /*****************************************************************************************************
+     * 
+     *                                   End  Profile Function 
      * 
      *****************************************************************************************************/
     
