@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 
 
@@ -79,7 +81,14 @@ class UserController extends Controller
               'message'=> 'The Phone Is Duplicated...',
               'code'=> 4  ]
               ,400); //يوجد مستخدم بهذا الرقم
+
+              
     }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
+    }
+
      /*****************************************************************************************************
      * 
      *                                   End  Regester Function 
@@ -101,12 +110,12 @@ class UserController extends Controller
             'code'=> 1  ],
               404);
         else{
-            // $request->validate([
-            //   // 'phone' => ['required', 'min:10', 'max:10', Rule::unique("users")->ignore($user->id, "id")],
-            //   'full_name' => 'required',
-            //   'address' => 'required',
-            //   'password' => 'required',
-            //   ]);
+            $request->validate([
+              // 'phone' => ['required', 'min:10', 'max:10', Rule::unique("users")->ignore($user->id, "id")],
+              'full_name' => 'required',
+              'address' => 'required',
+              'password' => 'required',
+              ]);
 
           $user->fill($request->all())->save();
           return response()->json([

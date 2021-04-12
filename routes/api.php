@@ -34,6 +34,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function(){
     Route::get('sections', 'OperationController@sections');
     // Get All Request 
     Route::get('requests', 'OperationController@requests');
+
+    // Get All Product By Section 
+    Route::get('{section}/products', 'OperationController@productSection');
      
 });
 // End   Api Here

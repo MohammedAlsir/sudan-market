@@ -96,4 +96,34 @@ class OperationController extends Controller
      *                                   End  requests Function 
      * 
      *****************************************************************************************************/
-}
+
+    /******************************************************************************************************
+     * 
+     *                                    Begin productSection Function 
+     * 
+     *****************************************************************************************************/
+    public function productSection($id){ // Function Get All Products By Section 
+        $products = Product::where('section_id','=',$id )->get(); //Get All By Section
+
+        if (count($products) > 0) { // التأكد من وجود منتجات 
+             return response()->json([
+                 'error'=>false , 
+                 'message'=>'' , 
+                 'data'=>$products],
+                    200);// 
+        }else
+            return response()->json([
+                'error'=>true ,
+                'message'=>'Sorry, There Are No Products In This Section Currently' ,
+                'code'=> 7],
+                    404); 
+            // رسالة خطأ // لا يوجد منتجات في هذا القسم  حاليا
+            
+    }
+    /*****************************************************************************************************
+     * 
+     *                                   End  requests Function 
+     * 
+     *****************************************************************************************************/
+
+} //End Main Function

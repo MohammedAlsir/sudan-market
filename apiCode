@@ -43,5 +43,12 @@
     - status code  رسائل الخطأ الراجعة :
         - 1  -> Phone Number Is Incorrect
 
+7 - عرض منتجات قسم معيين
+    http://127.0.0.1:8000/api/{section}/products
+    - المتغيرات  
+    لا يوجد
+    - status code  رسائل الخطأ الراجعة :
+    7 - Sorry, There Are No Products In This Section Currently
+
  
 
