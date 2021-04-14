@@ -5,13 +5,15 @@
     - status code  رسائل الخطأ الراجعة:
         - 0  -> The Password Is Wrong
         - 1  -> Phone Number Is Incorrect
+        
 
 2 - رابط تسجيل مستخدم جديد
     http://127.0.0.1:8000/api/user/register
     - المتغيرات :
-    1- full_name 2- password 3-phone 
+    1- full_name 2- password 3- phone  4- img 
     - status code  رسائل الخطأ الراجعة :
         - 3  -> The Phone Is Duplicated
+        - 8  -> The Image Is Too Big
 
 3 - عرض كل المنتجات
     http://127.0.0.1:8000/api/products

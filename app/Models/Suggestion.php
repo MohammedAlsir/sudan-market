@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Suggestion extends Model
 {
     use HasFactory;
+
+
+// Begin Relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+// End Relationship
 }
