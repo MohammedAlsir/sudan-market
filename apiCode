@@ -1,38 +1,37 @@
-1 - رابط تسجيل الدخول 
+1 - رابط تسجيل الدخول
     http://127.0.0.1:8000/api/user/login
     - المتغيرات :
         1- phone 2- password
     - status code  رسائل الخطأ الراجعة:
         - 0  -> The Password Is Wrong
         - 1  -> Phone Number Is Incorrect
-        
+
 
 2 - رابط تسجيل مستخدم جديد
     http://127.0.0.1:8000/api/user/register
     - المتغيرات :
-    1- full_name 2- password 3- phone  4- img 
+    1- full_name 2- password 3- phone  
     - status code  رسائل الخطأ الراجعة :
         - 3  -> The Phone Is Duplicated
-        - 8  -> The Image Is Too Big
 
 3 - عرض كل المنتجات
     http://127.0.0.1:8000/api/products
     - المتغيرات :
-        لا يوجد 
+        لا يوجد
     - status code  رسائل الخطأ الراجعة :
         - 4  -> There Are No Products Currently
 
  4 - عرض كل الاقسام
     http://127.0.0.1:8000/api/sections
     - المتغيرات :
-        لا يوجد 
+        لا يوجد
     - status code  رسائل الخطأ الراجعة :
         - 5  -> There Are No Sections Currently
 
 5 - عرض كل الطلبات
     http://127.0.0.1:8000/api/requests
     - المتغيرات :
-        لا يوجد 
+        لا يوجد
     - status code  رسائل الخطأ الراجعة :
         - 6  -> There Are No Requests Currently
 
@@ -40,17 +39,38 @@
     http://127.0.0.1:8000/api/user/{id}/profile
     - المتغيرات :
         1 - full_name
-        2 - password 
-        3 - phone 
+        2 - password
+        3 - phone
     - status code  رسائل الخطأ الراجعة :
         - 1  -> Phone Number Is Incorrect
 
 7 - عرض منتجات قسم معيين
     http://127.0.0.1:8000/api/{section}/products
-    - المتغيرات  
+    - المتغيرات
     لا يوجد
     - status code  رسائل الخطأ الراجعة :
     7 - Sorry, There Are No Products In This Section Currently
 
- 
+8 - تعديل صورة البروفايل
+    http://127.0.0.1:8000/api/user/5/profile/image
+    - المتغيرات
+    - image
+    - status code  رسائل الخطأ الراجعة :
+        - 1  -> Phone Number Is Incorrect
+        - 8  -> The Image Is Too Big
+        بالاضافة لاخطاء ال validation
+        - هذا الحقل مطلوب
+        - حجم الصورة كبير جدا
+        مثال للاخطاء الراجعة من ال validation
+        {
+            "message": "The given data was invalid.",
+            "errors": {
+                "img": [
+                    "The img field is required."
+                ]
+            }
+        }
+
+
+
 

@@ -23,20 +23,24 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function(){
     // Login Api For Users ==> Send phone & password
     Route::post('user/login','UserController@login');
 
-    // Regestration Function ==> Send full_name & phone & password  
+    // Regestration Function ==> Send full_name & phone & password
     Route::post('user/register','UserController@register');
     // Edit User Data  ==> Send All Data
     Route::post('user/{id}/profile', 'UserController@profile');
+    // Edit Profile Image  ==> Send Image
+    Route::post('user/{id}/profile/image', 'UserController@profileImage');
 
-    // Get All products 
+    // Get All products
     Route::get('products', 'OperationController@products');
-    // Get All Sections 
+    // Get All Sections
     Route::get('sections', 'OperationController@sections');
-    // Get All Request 
+    // Get All Request
     Route::get('requests', 'OperationController@requests');
 
-    // Get All Product By Section 
+    // Get All Product By Section
     Route::get('{section}/products', 'OperationController@productSection');
-     
+
+
+
 });
 // End   Api Here
