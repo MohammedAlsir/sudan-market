@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Request extends Model
 {
     use HasFactory;
+    // protected $fillable = array('*');
+    protected $guarded = [];
+
+
 
 // Begin Relationship
     public function user()

@@ -10,7 +10,7 @@
 2 - رابط تسجيل مستخدم جديد
     http://127.0.0.1:8000/api/user/register
     - المتغيرات :
-    1- full_name 2- password 3- phone  
+    1- full_name 2- password 3- phone
     - status code  رسائل الخطأ الراجعة :
         - 3  -> The Phone Is Duplicated
 
@@ -70,6 +70,11 @@
                 ]
             }
         }
+
+9 - اضافة طلبات جديدة
+    http://127.0.0.1:8000/api/requests
+    -  المتغيرات
+    - كل حقول جدول requests
 
 
 
